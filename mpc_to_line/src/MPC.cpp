@@ -123,8 +123,8 @@ class FG_eval {
       fg[1 + y_start + t] = y1 - (y0 + v0 * CppAD::sin(psi0) * dt);
       fg[1 + psi_start + t] = psi1 - (psi0 + v0 * CppAD::tan(psi0) * dt/Lf);
       fg[1 + v_start + t] = v1 - (v0 + a0*dt);
-      fg[1 + cte_start + t] = cte1 - (cte0 + v0 * CppAD::sin(espi0) * dt);
-      fg[1 + epsi_start + t] = epsi1 - (espi0 + v0 * CppAD::tan(delta0) * dt/Lf);
+      fg[1 + cte_start + t] = cte1 - (cte0 + v0 * CppAD::sin(epsi0) * dt);
+      fg[1 + epsi_start + t] = epsi1 - (epsi0 + v0 * CppAD::tan(delta0) * dt/Lf);
     }
   }
 };
@@ -294,7 +294,7 @@ int main() {
   ptsy << -1, -1;
 
   // TODO: fit a polynomial to the above x and y coordinates
-  auto coeffs = polyfit(ptsx,ptsy,3) ;
+  auto coeffs = polyfit(ptsx,ptsy,1) ;
 
   // NOTE: free feel to play around with these
   double x = -1;
